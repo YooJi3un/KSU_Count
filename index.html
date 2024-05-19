@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>동상이몽 전시회</title>
     <style>
+        @font-face {
+            font-family: "cafe20dangdanghae";
+            src: url("fonts/Cafe24Dangdanghae.ttf");
+        }
         body {
             font-family: Arial, sans-serif;
             display: flex;
@@ -16,19 +20,20 @@
             background: url('img/카운트다운.jpg') no-repeat center center/cover;
             color: white;
             text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+            font-family: "cafe20dangdanghae";
         }
         #countdown {
             text-align: center;
         }
         h1 {
-            font-size: 8rem; /* D-Day 글씨 크게 설정 */
+            font-size: 6rem; /* D-Day 글씨 크게 설정 */
         }
         .time-container {
             display: flex;
-            gap: 1rem; /* 각 시간 요소 간격 조절 */
+            gap: 0.5rem; /* 각 시간 요소 간격 조절 */
         }
         .time {
-            font-size: 3rem;
+            font-size: 2rem;
         }
     </style>
 </head>
