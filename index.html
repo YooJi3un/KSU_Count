@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>카운트다운</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: url('img/카운트다운.jpg') no-repeat center center/cover;
+            color: white;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+        }
+        #countdown {
+            text-align: center;
+        }
+        h1 {
+            font-size: 8rem; /* D-Day 글씨 크게 설정 */
+        }
+        .time-container {
+            display: flex;
+            gap: 1rem; /* 각 시간 요소 간격 조절 */
+        }
+        .time {
+            font-size: 3rem;
+        }
+    </style>
+</head>
+<body>
+    <div id="countdown">
+        <h1>D-day</h1>
+        <div class="time-container">
+            <div class="time" id="days"></div>
+            <div class="time" id="hours"></div>
+            <div class="time" id="minutes"></div>
+            <div class="time" id="seconds"></div>
+        </div>
+    </div>
+    <script>
+        const launchDate = new Date('June 17, 2024 00:00:00 GMT+0900').getTime();
+        const redirectUrl = 'https://your-django-site-url.com'; // Django 홈페이지 URL
+
+        const countdown = setInterval(() => {
+            const now = new Date().getTime();
+            const distance = launchDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById('days').innerText = days + "일 ";
+            document.getElementById('hours').innerText = hours + "시간 ";
+            document.getElementById('minutes').innerText = minutes + "분 ";
+            document.getElementById('seconds').innerText = seconds + "초 ";
+
+            if (distance < 0) {
+                clearInterval(countdown);
+                document.getElementById('countdown').innerText = "로딩중";
+                window.location.href = redirectUrl; // 리디렉션 수행
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
